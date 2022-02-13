@@ -1,0 +1,11 @@
+{
+    "name": "系统更新",
+    "ident": "Upgrade",
+    "description": "系统更新",
+    "version": "1.0.0",
+    "author": "mycms",
+    "providers": [
+        "Addons\\Upgrade\\Providers\\ServiceProvider"
+    ],
+    "home": "/addon/upgrade"
+}

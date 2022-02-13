@@ -1,0 +1,11 @@
+{
+    "name": "织梦数据导入",
+    "ident": "Dedecms",
+    "description": "织梦数据导入",
+    "version": "1.0.0",
+    "author": "mycms",
+    "providers": [
+        "Addons\\Dedecms\\Providers\\ServiceProvider"
+    ],
+    "home": "/addon/dede"
+}

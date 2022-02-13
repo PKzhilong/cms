@@ -1,0 +1,11 @@
+{
+    "name": "URL优化",
+    "ident": "UrlFormat",
+    "description": "URL优化",
+    "version": "1.0.0",
+    "author": "mycms",
+    "providers": [
+        "Addons\\UrlFormat\\Providers\\ServiceProvider"
+    ],
+    "home": ""
+}

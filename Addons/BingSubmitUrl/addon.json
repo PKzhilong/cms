@@ -1,0 +1,11 @@
+{
+    "name": "必应资源推送",
+    "ident": "BingSubmitUrl",
+    "description": "BingSubmitUrl",
+    "version": "1.0.0",
+    "author": "mycms",
+    "providers": [
+        "Addons\\BingSubmitUrl\\Providers\\ServiceProvider"
+    ],
+    "home": "/addon/bing_submit_url"
+}
