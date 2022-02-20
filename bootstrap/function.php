@@ -175,12 +175,9 @@ if (!function_exists('system_image_url')) {
 
         if ($disk == 'oss') {
 
-            $config = system_config([], $disk);
-
-            return isset($config['oss_url']) && $config['oss_url'] ?
-                $config['oss_url'] . $path :
-                "//" . $config['oss_bucket'] . "." . $config['oss_endpoint'] . "/" . $path;
-
+            $url = Storage::url($path);
+            $url = str_replace('https://', '', $url);
+            return 'https://' . $url;
         }
 
         return str_replace('public/', '/', $path);

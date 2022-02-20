@@ -186,6 +186,7 @@ return [
         Expand\Addon\Providers\AddonServiceProvider::class,
         Expand\Addon\Providers\AddonEventServiceProvider::class,
         SwooleTW\Http\LaravelServiceProvider::class,
+        Jacobcyl\AliOSS\AliOssServiceProvider::class,
     ],
 
     /*
