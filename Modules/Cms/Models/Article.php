@@ -10,6 +10,26 @@ class Article extends MyModel
 {
 
     protected $table = 'my_article';
+    protected $fillable = ['view', 'download_times'];
+
+    /**
+     * 类型转换
+     *
+     * @var array
+     */
+    protected $casts = [
+        'img' => 'array',
+    ];
+
+    /**
+     * 所使用tag
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function tags()
+    {
+        return $this->belongsToMany(ArticleTag::class, 'my_article_tag_rel', 'article_id', 'tag_id');
+    }
+
 
     public function __get($key)
     {

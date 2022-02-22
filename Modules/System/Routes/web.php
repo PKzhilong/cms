@@ -15,7 +15,7 @@ Route::group(['prefix' => 'system', 'namespace' => '\Modules\System\Http\Control
     Route::group(['middleware' => 'admin.auth'], function () {
         Route::get('index', 'SystemController@index')->name('system.index');
         Route::get('dashboard', 'SystemController@dashboard')->name('system.dashboard');
-        Route::post('upload', 'SystemController@images');
+        Route::post('upload', 'SystemController@images')->name('system.upload.images');
 
         Route::get('config', 'ConfigController@index')->name('system.config');
         Route::post('config', 'ConfigController@store');

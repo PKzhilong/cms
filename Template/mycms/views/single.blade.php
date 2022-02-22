@@ -24,7 +24,7 @@
                     <div class="col-lg-8">
                         <div class="theme-single blog-single">
                             <div class="theme-pic">
-                                <img src="{{$article->img}}" style="max-height: 350px" class="big-pic">
+                                <img src="{{isset($article->img[0]) ? $article->img[0]['url'] : ''}}" style="max-height: 350px" class="big-pic">
                             </div>
                             <div class="theme-info">
                                 <div class="theme-meta">
@@ -173,7 +173,7 @@
                                 @foreach(articles(1,5,'new') as $article)
                                     <div class="recent-post-single">
                                         <div class="recent-post-pic">
-                                            <img src="{{$article->img}}" style="width: 80px">
+                                            <img src="{{isset($article->img[0]) ? $article->img[0]['url'] : ''}}" style="width: 80px">
                                         </div>
                                         <div class="recent-post-bio">
                                             <h6>
@@ -196,7 +196,7 @@
                                 @foreach(articles(1,5,'hot') as $article)
                                     <div class="recent-post-single">
                                         <div class="recent-post-pic">
-                                            <img src="{{$article->img}}" style="width: 80px">
+                                            <img src="{{isset($article->img[0]) ? $article->img[0]['url'] : ''}}" style="width: 80px">
                                         </div>
                                         <div class="recent-post-bio">
                                             <h6>

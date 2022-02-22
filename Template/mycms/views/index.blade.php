@@ -431,7 +431,7 @@
                 @foreach($articles = articles(1,3) as $article)
                 <div class="blog-box wow fadeInUp">
                     <div class="blog-pic">
-                        <a href="{{single_path($article->id)}}"><img src="@if(isset($article->img)) {{$article->img}} @else /mycms/cms/theme/mycms/assets/img/blog/1.jpg @endif" ></a>
+                        <a href="{{single_path($article->id)}}"><img src="@if(isset($article->img)) {{$article->img[0]['url']}} @else /mycms/cms/theme/mycms/assets/img/blog/1.jpg @endif" ></a>
                     </div>
                     <div class="blog-desc">
                         <div class="blog-meta">

@@ -5,8 +5,10 @@ namespace Modules\Api\Http\Controllers;
 
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Modules\Api\Http\Requests\ArticleCommentRequest;
 use Modules\Cms\Models\ArticleComment;
+use Modules\Cms\Repositories\Article\Articles;
 
 class CmsController extends ApiController
 {
@@ -77,6 +79,19 @@ class CmsController extends ApiController
     }
 
     /**
+     * 新的分页数据
+     *
+     * @param Request $request
+     * @param Articles $articles
+     * @return JsonResponse
+     */
+    public function articles2(Request $request, Articles $articles)
+    {
+        $page = $articles->getPage($request);
+        return $this->success(['result' => $page]);
+    }
+
+    /**
      * 文章详情
      * @return JsonResponse
      */
@@ -100,6 +115,19 @@ class CmsController extends ApiController
 
         return $this->success(['result' => []]);
 
+    }
+
+    public function articleInfo2(Request $request, Articles $articles)
+    {
+        $article = $articles->getInfo($request->get('id', 0));
+        if (!$article) {
+            return $this->error([
+                'msg' => '文章查询失败'
+            ]);
+        }
+
+        $article->update(['view' => $article->view + 1]);
+        return $this->success(['result' => $article]);
     }
 
     /**

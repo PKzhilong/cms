@@ -12,7 +12,7 @@
 */
 
 Route::group([
-    'middleware' => 'admin.auth',
+//    'middleware' => 'admin.auth',
     'namespace' => '\Modules\Cms\Http\Controllers\Admin'
 ], function () {
     Route::group(['prefix' => 'article/admin'], function () {
@@ -27,9 +27,11 @@ Route::group([
 
         Route::get('/', 'ArticleController@index')->name('article.admin');
         Route::get('/create', 'ArticleController@create')->name('article.admin.create');
-        Route::post('/create', 'ArticleController@store');
+        Route::get('/create2', 'ArticleController@create2')->name('article.admin.create2');
+
+        Route::post('/create', 'ArticleController@store')->name('article.admin.create_info');
         Route::get('/edit', 'ArticleController@edit')->name('article.admin.edit');
-        Route::post('/edit', 'ArticleController@update');
+        Route::post('/edit', 'ArticleController@update')->name('article.admin.edit_info');
         Route::post('/destroy', 'ArticleController@destroy');
         Route::get('/tags', 'ArticleController@tags')->name('article.admin.tags');
         Route::post('/tags', 'ArticleController@tagStore');

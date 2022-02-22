@@ -19,8 +19,8 @@ Route::prefix('v1')->name('api.v1.')
             Route::post('/categories', 'CmsController@categories');
             Route::post('/category/info', 'CmsController@categoryInfo');
 
-            Route::post('/articles', 'CmsController@articles');
-            Route::post('/article/info', 'CmsController@articleInfo');
+            Route::post('/articles', 'CmsController@articles2');
+            Route::post('/article/info', 'CmsController@articleInfo2');
 
             Route::post('/store/categories', 'StoreController@categories');
             Route::post('/store/category/info', 'StoreController@categoryInfo');

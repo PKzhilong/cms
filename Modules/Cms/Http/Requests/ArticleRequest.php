@@ -20,8 +20,12 @@ class ArticleRequest extends MyRequest
             'title' => ['required','max:255'],
             'content' => ['required'],
             'description' => ['max:255'],
-            'img' => ['max:255'],
+            'img' => ['required', 'array'],
+            'q' => ['required','numeric'],
             'author' => ['max:255'],
+            'status' => ['required'],
+            'zip_url' => ['required'],
+            'video_url' => ['max:255'],
         ];
     }
 
@@ -33,7 +37,7 @@ class ArticleRequest extends MyRequest
             'title.max' => '标题长度错误',
             'description.max' => '描述长度错误',
             'author.max' => '作者格式错误',
-            'img.max' => '缩略图链接长度错误',
+//            'img.max' => '缩略图链接长度错误',
             'content.required' => '请输入内容',
         ];
     }

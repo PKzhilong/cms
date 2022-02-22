@@ -44,7 +44,16 @@ class ArticleController extends MyController
         $categories = app('cms')->categoryTreeForSelect();
         $attributes = app('system')->attributes();
 
-        return $this->view('admin.article.create', compact('categories', 'attributes'));
+        return $this->view('admin.article.create2', compact('categories', 'attributes'));
+    }
+
+
+    public function create2()
+    {
+        $categories = app('cms')->categoryTreeForSelect();
+        $attributes = app('system')->attributes();
+
+        return $this->view('admin.article.create2', compact('categories', 'attributes'));
     }
 
     /**
@@ -93,7 +102,7 @@ class ArticleController extends MyController
             )
         );
 
-        return $this->view('admin.article.edit', compact('categories', 'article', 'tags', 'meta', 'attributes'));
+        return $this->view('admin.article.edit2', compact('categories', 'article', 'tags', 'meta', 'attributes'));
     }
 
 
@@ -166,22 +175,5 @@ class ArticleController extends MyController
 
     protected function updateMeta($id)
     {
-        $attr = $this->request('attr');
-        ArticleMeta::where('article_id', $id)->delete();
-
-        foreach ($attr['ident'] as $key => $ident) {
-
-            if ($ident && isset($attr['value'][$key])) {
-
-                $meta = [
-                    'article_id' => $id,
-                    'meta_key' => $ident,
-                    'meta_value' => $attr['value'][$key],
-                ];
-
-                (new ArticleMeta)->store($meta);
-            }
-
-        }
     }
 }
