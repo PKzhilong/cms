@@ -22,6 +22,8 @@ define(["jquery", "easy-admin"], function ($, ea) {
                     {field: 'author', minWidth: 80, title: '作者'},
                     {field: 'category.name', minWidth: 80, title: '分类'},
                     {field: 'view', minWidth: 80, title: '浏览'},
+                    {field: 'q', minWidth: 80, title: '所需积分'},
+                    {field: 'download_times', minWidth: 80, title: '下载次数'},
                     {field: 'created_at', minWidth: 120, title: '时间'},
                     {
                         width: 250,

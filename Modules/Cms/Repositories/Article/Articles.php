@@ -21,7 +21,8 @@ class Articles
      */
     public function getPage(Request $request)
     {
-        $query = Article::query()->with(['tags', 'category']);
+        $fields = ['id', 'title', 'thumbnail','category_id', 'img', 'video_url', 'created_at', 'updated_at', 'view', 'download_times'];
+        $query = Article::query()->with(['tags', 'category'])->select($fields);
         $title = $request->get('title', '');
         if ($title) {
             $query->where('title', 'like', $title . '%');

@@ -4,6 +4,8 @@
 namespace Modules\Api\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends ApiController
@@ -12,12 +14,14 @@ class UserController extends ApiController
      * 用户登录
      * @return JsonResponse
      */
-    public function login(): JsonResponse
+    public function login(Request $request): JsonResponse
     {
-        $username = $this->request("username");
-        $password = $this->request("password");
+        $credentials = $request->only('name', 'password');
+
+        var_dump(Auth::guard('web')->attempt($credentials));exit;
 
         $user = app('user')->user($username);
+        if (Auth::guard('web')->attempt())
 
         if ($user && $user->status == 1 && Hash::check($password, $user->password)) {
             return $this->success([

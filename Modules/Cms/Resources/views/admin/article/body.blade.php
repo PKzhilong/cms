@@ -24,15 +24,20 @@
 </div>
 </body>
 
-<script>
-    let VueInitData = {
-        el: '#app'
-    }
-</script>
 @section('script')
 @show
 <script>
+    let VueData;
+    if(typeof(VueInitData) == 'undefined' || VueInitData == null) {
+        VueData = {
+            el: '#app'
+        }
+    } else {
+        VueData = VueInitData;
+        VueData['el'] = '#app';
+    }
     Vue.prototype.$http = axios
-    var app = new Vue(VueInitData)
+    let app = new Vue(VueData)
+
 </script>
 </html>

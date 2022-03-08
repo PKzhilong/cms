@@ -42,6 +42,31 @@
                     </el-switch>
                 </el-form-item>
 
+                <el-form-item label="缩略图">
+
+                    <el-upload list-type="picture-card" :auto-upload="true" action="{{route('system.upload.images')}}" name="file" :on-success="handleSuccessThumbnail">
+                        <i slot="default" class="el-icon-plus"></i>
+                        <div slot="file" slot-scope="{file}">
+                            <img class="el-upload-list__item-thumbnail" :src="file.url" alt="">
+                            <span class="el-upload-list__item-actions">
+                             <span class="el-upload-list__item-preview" @click="handlePictureCardPreview(file)">
+                                 <i class="el-icon-zoom-in"></i>
+                             </span>
+                                <span v-if="!disabled" class="el-upload-list__item-delete" @click="handleDownload(file)"><i class="el-icon-download"></i></span>
+                               <span v-if="!disabled" class="el-upload-list__item-delete" @click="handleRemove2(file)">
+                                <i class="el-icon-delete"></i>
+                                </span>
+                        </span>
+                        </div>
+                    </el-upload>
+                    <el-dialog :visible.sync="dialogVisible">
+                        <img width="100%" :src="form.thumbnail" alt="">
+                    </el-dialog>
+
+
+                </el-form-item>
+
+
                 <el-form-item label="内容图片" pope="img">
                     <el-upload
                         class="upload-demo"
@@ -100,7 +125,12 @@
                     zip_url: '',
                     video_url: '',
                     img: [],
+                    thumbnail: ''
                 },
+
+                dialogImageUrl: '',
+                dialogVisible: false,
+                disabled: false,
                 rules: {
                     title: [
                         {required: true, message: '请输入文章标题', trigger: 'blur'},
@@ -164,10 +194,7 @@
                         }
 
                         this.form.status = this.form.status ? 1 : 0
-                        console.log(this.form);
                         this.$http.post(this.createUrl, this.form).then((response) => {
-
-                            console.log(response);
                             if (response.data.code == 200) {
                                 this.$notify({
                                     title: '创建成功',
@@ -180,6 +207,8 @@
                                     }
                                 })
                             }
+                        }).cache((error) => {
+                            console.log(error)
                         })
 
                     });
@@ -198,8 +227,24 @@
                 },
                 handleSuccess(response, file, fileList) {
                     this.form.img.push({'name': file.name, 'url': response.data})
-                    console.log(fileList, this.files)
+                },
+                handleSuccessThumbnail(response, file, fileList) {
+                    this.form.thumbnail = response.data
+                },
+
+
+
+                handleRemove2(file) {
+                    console.log(file);
+                },
+                handlePictureCardPreview(file) {
+                    this.dialogImageUrl = file.url;
+                    this.dialogVisible = true;
+                },
+                handleDownload(file) {
+                    console.log(file);
                 }
+
             }
         }
     </script>

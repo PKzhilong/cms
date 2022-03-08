@@ -59,8 +59,8 @@ return [
         ],
         'oss' => [
             'driver' => 'oss',
-            'access_id' => env('OSSAccessKeyId', 'LTAIA5Fg8o5JO4HL'),
-            'access_key' => env('OSSAccessKeySecret', 'ihC6Sfju7aMFS7lIZ8FcJFKNfUzh4S'),
+            'access_id' => env('OSSAccessKeyId', ''),
+            'access_key' => env('OSSAccessKeySecret', ''),
             'bucket' => env('OSSBucket', 'mater-test'),
             'endpoint' => 'https://oss-cn-beijing.aliyuncs.com', // OSS 外网节点或自定义外部域名
             'cdnDomain' => 'https://mater-test.oss-cn-beijing.aliyuncs.com', // 如果isCName为true, getUrl会判断cdnDomain是否设定来决定返回的url，如果cdnDomain未设置，则使用endpoint来生成url，否则使用cdn

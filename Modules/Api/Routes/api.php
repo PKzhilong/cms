@@ -14,7 +14,7 @@
 Route::prefix('v1')->name('api.v1.')
     ->group(function () {
 
-        Route::middleware('api.sign')->group(function () {
+        Route::middleware(['api.sign', 'auth:web'])->group(function () {
 
             Route::post('/categories', 'CmsController@categories');
             Route::post('/category/info', 'CmsController@categoryInfo');
@@ -31,8 +31,7 @@ Route::prefix('v1')->name('api.v1.')
             Route::post('/comments', 'CmsController@comments');
             Route::post('/comment/submit', 'CmsController@submitComment');
 
-            Route::post('/user/login', 'UserController@login');
-            Route::post('/user/reg', 'UserController@reg');
+
             Route::post('/user/info', 'UserController@info');
             Route::post('/user/ranks', 'UserController@ranks');
 
@@ -40,6 +39,9 @@ Route::prefix('v1')->name('api.v1.')
 
 
         });
+
+        Route::post('/user/login', 'UserController@login');
+        Route::post('/user/reg', 'UserController@reg');
 
         Route::post('/timestamp', 'SystemController@timestamp');
         Route::post('/region', 'SystemController@region');

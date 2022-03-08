@@ -26,6 +26,7 @@ class ArticleRequest extends MyRequest
             'status' => ['required'],
             'zip_url' => ['required'],
             'video_url' => ['max:255'],
+            'thumbnail' => ['required', 'url']
         ];
     }
 
